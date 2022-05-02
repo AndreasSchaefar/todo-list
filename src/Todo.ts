@@ -5,6 +5,7 @@ export default class Todo {
     text: string;
     priority: priority;
     dueDate: string;
+    id?: number;
 
     constructor(complete: boolean, text: string, priority: priority, dueDate: string) {
         this.complete = complete;
