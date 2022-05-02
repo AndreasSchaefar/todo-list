@@ -30,6 +30,10 @@ export default class Model {
         })
     }
 
+    public toggleTodo(id: number) {
+        
+    }
+
 
     private assignTodoId() {
         if (this.todosList.length === 0) {
