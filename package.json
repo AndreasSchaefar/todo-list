@@ -2,7 +2,6 @@
   "name": "todo-list",
   "version": "1.0.0",
   "description": "Todo list project from TOP",
-  "main": "webpack.config.js",
   "private": true,
   "scripts": {
     "test": "jest --verbose --watchAll",
@@ -22,8 +21,11 @@
   },
   "homepage": "https://github.com/AndreasSchaefar/todo-list#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^27.4.1",
+    "babel-jest": "^28.0.2",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "sass-loader": "^12.6.0",
