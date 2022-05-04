@@ -8,6 +8,7 @@ interface Todo {
 
 export function TodoItem(todo: Todo): HTMLLIElement {
     const li = document.createElement('li');
+    li.id = todo.id.toString();
 
     const checkboxInput = document.createElement('input');
     const textSpan = document.createElement('span');
@@ -25,6 +26,8 @@ export function TodoItem(todo: Todo): HTMLLIElement {
     dateInput.name = 'dueDate';
     dateInput.value = todo.dueDate;
 
+    textSpan.contentEditable = 'true';
+
     if (todo.complete) {
         const s = document.createElement('s');
         s.textContent = todo.text;
@@ -34,6 +37,7 @@ export function TodoItem(todo: Todo): HTMLLIElement {
     }
 
     deleteBtn.textContent = 'X';
+    deleteBtn.className = 'delete';
     
     priorities.forEach(priority => {
         const option = document.createElement('option');
