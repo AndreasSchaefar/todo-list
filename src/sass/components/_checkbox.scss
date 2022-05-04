@@ -1,0 +1,32 @@
+@use '../abstracts/colors';
+@use '../abstracts//variables';
+
+input[type="checkbox"] {
+    appearance: none;
+    cursor: pointer;
+    height: variables.$checkbox-size;
+    width: variables.$checkbox-size;
+    background-color: inherit;
+    border-style: solid;
+    border-color: colors.$light-grayish-blue;
+    border-width: 1px;
+    border-radius: 100%;
+    position: relative;
+
+    &:hover {
+        border-color: colors.$light-purple;
+    }
+
+    &:checked {
+        border: none;
+        background: colors.$check-background;
+    }
+
+    &:checked::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(calc(-50% + 5px));
+        content: url('../assets/check.svg');
+    }
+}
