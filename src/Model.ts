@@ -25,13 +25,11 @@ export default class Model {
     }
 
     public deleteTodo(id: number) {
-        this.todosList = this.todosList.filter(todo => {
-            todo.id !== id;
-        })
+        this.todosList = this.todosList.filter(todo => todo.id !== id);
     }
 
     public toggleTodo(id: number) {
-        
+        this.todosList = this.todosList.map(todo => todo.id === id ? {...todo, complete: !todo.complete} : todo);
     }
 
 
