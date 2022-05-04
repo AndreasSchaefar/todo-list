@@ -11,9 +11,11 @@ export function TodoForm(): HTMLFormElement {
     checkboxInput.name = 'complete';
     textInput.placeholder = 'Enter description';
     textInput.name = 'text';
+    textInput.required = true;
     prioritySelect.name = 'priority';
     dateInput.type = 'date';
     dateInput.name = 'dueDate';
+    dateInput.required = true;
     submitBtn.type = 'submit';
     submitBtn.textContent = 'Create';
     
