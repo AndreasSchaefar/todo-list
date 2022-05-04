@@ -16,8 +16,10 @@ export default class Controller {
     constructor(model: Model, view: View) {
         this.model = model;
         this.view = view;
-
-
+        this.view.bindDeleteTodo(this.handleDeleteTodo);
+        this.view.bindCreateTodo(this.handleCreateTodo);
+        this.view.bindToggleTodo(this.handleToggleTodo);
+        this.view.bindUpdateTodo(this.handleUpdateTodo);
         this.onTodosChange();
     }
 
@@ -25,15 +27,23 @@ export default class Controller {
         this.view.displayTodos(this.model.todosList);
     }
 
-    handleCreateTodo(todo: Todo) {
+    handleCreateTodo = (todo: Todo) => {
         this.model.createTodo(todo);
+        this.onTodosChange();
     }
 
-    handleDeleteTodo(id: number) {
+    handleDeleteTodo = (id: number) => {
         this.model.deleteTodo(id);
+        this.onTodosChange();
     }
 
-    handleUpdateTodo(id: number, todoProps: Todo) {
+    handleToggleTodo = (id: number) => {
+        this.model.toggleTodo(id);
+        this.onTodosChange();
+    }
+
+    handleUpdateTodo = (id: number, todoProps: Todo) => {
         this.model.updateTodo(id, todoProps);
+        this.onTodosChange();
     }
 }
