@@ -1,7 +1,7 @@
 import Model from './Model';
 import View from './View';
 
-interface Todo {
+type Todo = {
     id?: number;
     complete: boolean;
     text: string;

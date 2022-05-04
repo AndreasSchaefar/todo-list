@@ -4,7 +4,7 @@ import { TodoItem } from "./TodoItem";
 
 type priority = 'low' | 'medium' | 'high';
 
-interface Todo {
+type Todo = {
     id?: number;
     complete: boolean;
     text: string;
