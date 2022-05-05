@@ -38,7 +38,7 @@ export default class View {
             this.todoList.append(TodoItem(todo));
         })
 
-        this.listControls.querySelector('#counter').textContent = `${todos.length} items left`;
+        this.listControls.querySelector('#counter').textContent = `${todos.filter(todo => !todo.complete).length} items left`;
     }
 
     bindCreateTodo(handler: Function) {
