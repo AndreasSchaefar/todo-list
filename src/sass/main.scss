@@ -1,8 +1,19 @@
+@use './abstracts/colors';
 @use './base/reset';
 @use './typography/font';
 @use './components/checkbox';
 @use './components/buttons';
-@use './components/list';
 @use './components/input';
 @use './abstracts/misc';
 @use './layout/layout';
+@use './themes/dark';
+
+
+body {
+    background-color: colors.$very-light-gray;
+
+    #root > * {
+        background-color: colors.$white;
+    }
+}
+

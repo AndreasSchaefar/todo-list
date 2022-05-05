@@ -28,12 +28,12 @@
     }
 }
 
-@mixin selector() {
+@mixin selector {
     cursor: pointer;
     border-width: 5px;
     border-color: transparent;
     padding: 0 10px;
-    min-width: 150px;
+    min-width: 10ch;
     text-align: start;
     text-transform: capitalize;
     border-radius: 2px;
@@ -48,4 +48,5 @@
     background-color: colors.$primary-bright-blue;
     color: colors.$very-light-gray;
     cursor: pointer;
+    max-width: fit-content;
 }
