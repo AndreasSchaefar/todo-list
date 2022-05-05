@@ -1,7 +1,11 @@
+@use '../abstracts/colors';
+@use '../abstracts/variables';
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
 body {
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: normal;
+    color: colors.$very-dark-grayish-blue;
+    font-weight: variables.$fw-400;
 }
