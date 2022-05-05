@@ -1,5 +1,5 @@
 type Todo = {
-    id?: number;
+    id?: string;
     complete: boolean;
     text: string;
     priority: 'low' | 'medium' | 'high';
@@ -7,7 +7,7 @@ type Todo = {
 }
 
 export default class Model {
-    todosList: Array<Todo>
+    todosList: Array<Todo>;
     
     constructor() {
         this.todosList = JSON.parse(localStorage.getItem('todosList')) || [];
@@ -18,7 +18,7 @@ export default class Model {
         this.commit(this.todosList);
     }
 
-    public updateTodo(id: number, todoProps: Todo) {
+    public updateTodo(id: string, todoProps: Todo) {
         this.todosList = this.todosList.map(todo => {
             todo = todo.id === id ? {id: id, ...todoProps} : todo;
             return todo;
@@ -26,12 +26,12 @@ export default class Model {
         this.commit(this.todosList);
     }
 
-    public deleteTodo(id: number) {
+    public deleteTodo(id: string) {
         this.todosList = this.todosList.filter(todo => todo.id !== id);
         this.commit(this.todosList);
     }
 
-    public toggleTodo(id: number) {
+    public toggleTodo(id: string) {
         this.todosList = this.todosList.map(todo => todo.id === id ? {...todo, complete: !todo.complete} : todo);
         this.commit(this.todosList);
     }
@@ -43,10 +43,7 @@ export default class Model {
 
 
     private assignTodoId() {
-        if (this.todosList.length === 0) {
-            return 1;
-        }
-        return this.todosList.length + 1;
+        return "id" + Math.random().toString(16).slice(2);
     }
 
     private commit(todosList: Array<Object>) {

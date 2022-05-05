@@ -17,5 +17,9 @@
         @include mixins.selector()
     }
 
+    input[type="date"] {
+        @include mixins.dateInput;
+    }
+
     
 }

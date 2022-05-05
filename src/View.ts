@@ -2,11 +2,12 @@ import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
 import { ListControls } from './ListControls';
+import { AppContainer } from './AppContainer'
 
 type priority = 'low' | 'medium' | 'high';
 
 type Todo = {
-    id?: number;
+    id?: string;
     complete: boolean;
     text: string;
     priority: priority
@@ -18,14 +19,16 @@ export default class View {
     todoForm: HTMLFormElement;
     todoList: HTMLUListElement;
     listControls: HTMLDivElement;
+    appContainer: HTMLDivElement;
 
     constructor() {
         this.mountPoint = document.querySelector('#root');
+        this.appContainer = AppContainer();
         this.todoForm = TodoForm();
         this.todoList = TodoList();
         this.listControls = ListControls();
-
-        this.mountPoint.append(this.todoForm, this.todoList, this.listControls);
+        this.appContainer.append(this.todoList, this.listControls);
+        this.mountPoint.append(this.todoForm, this.appContainer);
     }
 
     displayTodos(todos: Array<Todo>) {
@@ -60,7 +63,7 @@ export default class View {
             const target = event.target as HTMLElement;
             
             if (target.className === 'delete') {
-                handler(parseInt(target.parentElement.id));
+                handler(target.parentElement.id);
             }
         })
     }
@@ -70,7 +73,7 @@ export default class View {
             const target = event.target as HTMLInputElement;
             
             if (target.type === 'checkbox') {
-                handler(parseInt(target.parentElement.id));
+                handler(target.parentElement.id);
             }
         })
     }
@@ -84,7 +87,7 @@ export default class View {
                 const target = e.target as HTMLElement;
                 const targetParentId = target.parentElement.id;
                 const todoObj = View.getProps(e);
-                handler(parseInt(targetParentId), todoObj);
+                handler(targetParentId, todoObj);
             })
         });
     }

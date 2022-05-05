@@ -20,13 +20,7 @@ ul {
         }
 
         input[type="date"] {
-            border-color: transparent;
-            border-width: 5px;
-            border-radius: 2px;
-            outline: none;
-            background-color: colors.$primary-bright-blue;
-            color: colors.$very-light-gray;
-            cursor: pointer;
+            @include mixins.dateInput;
         }
     }
 }

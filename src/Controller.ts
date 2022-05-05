@@ -2,7 +2,7 @@ import Model from './Model';
 import View from './View';
 
 type Todo = {
-    id?: number;
+    id?: string;
     complete: boolean;
     text: string;
     priority: 'low' | 'medium' | 'high';
@@ -33,17 +33,17 @@ export default class Controller {
         this.onTodosChange();
     }
 
-    handleDeleteTodo = (id: number) => {
+    handleDeleteTodo = (id: string) => {
         this.model.deleteTodo(id);
         this.onTodosChange();
     }
 
-    handleToggleTodo = (id: number) => {
+    handleToggleTodo = (id: string) => {
         this.model.toggleTodo(id);
         this.onTodosChange();
     }
 
-    handleUpdateTodo = (id: number, todoProps: Todo) => {
+    handleUpdateTodo = (id: string, todoProps: Todo) => {
         this.model.updateTodo(id, todoProps);
         this.onTodosChange();
     }

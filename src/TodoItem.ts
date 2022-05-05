@@ -1,5 +1,5 @@
 interface Todo {
-    id?: number;
+    id?: string;
     complete: boolean;
     text: string;
     priority: 'low' | 'medium' | 'high';

@@ -9,3 +9,16 @@ button.delete {
     @include mixins.button('../assets/delete.svg');
 }
 
+button.clear {
+    display: inline-block;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    font-weight: variables.$fw-700;
+    cursor: pointer;
+    opacity: 0.7;
+
+    &:hover {
+        opacity: 1;
+    }
+}
