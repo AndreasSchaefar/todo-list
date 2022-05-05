@@ -1,6 +1,7 @@
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
+import { ListControls } from './ListControls';
 
 type priority = 'low' | 'medium' | 'high';
 
@@ -16,13 +17,15 @@ export default class View {
     mountPoint: HTMLElement;
     todoForm: HTMLFormElement;
     todoList: HTMLUListElement;
+    listControls: HTMLDivElement;
 
     constructor() {
         this.mountPoint = document.querySelector('#root');
         this.todoForm = TodoForm();
         this.todoList = TodoList();
+        this.listControls = ListControls();
 
-        this.mountPoint.append(this.todoForm, this.todoList);
+        this.mountPoint.append(this.todoForm, this.todoList, this.listControls);
     }
 
     displayTodos(todos: Array<Todo>) {
@@ -34,6 +37,8 @@ export default class View {
         todos.forEach(todo => {
             this.todoList.append(TodoItem(todo));
         })
+
+        this.listControls.querySelector('#counter').textContent = `${todos.length} items left`;
     }
 
     bindCreateTodo(handler: Function) {
@@ -79,10 +84,18 @@ export default class View {
                 const target = e.target as HTMLElement;
                 const targetParentId = target.parentElement.id;
                 const todoObj = View.getProps(e);
-                console.log(todoObj);
                 handler(parseInt(targetParentId), todoObj);
             })
         });
+    }
+
+    bindClearCompleted(handler: Function) {
+        this.listControls.addEventListener('click', event => {
+            const target = event.target as HTMLElement;
+            if (target.className === 'clear') {
+                handler();
+            }
+        })
     }
 
     private static getProps(event: Event): Todo {

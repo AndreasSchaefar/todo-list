@@ -20,6 +20,7 @@ export default class Controller {
         this.view.bindCreateTodo(this.handleCreateTodo);
         this.view.bindToggleTodo(this.handleToggleTodo);
         this.view.bindUpdateTodo(this.handleUpdateTodo);
+        this.view.bindClearCompleted(this.handleClearCompleted);
         this.onTodosChange();
     }
 
@@ -44,6 +45,11 @@ export default class Controller {
 
     handleUpdateTodo = (id: number, todoProps: Todo) => {
         this.model.updateTodo(id, todoProps);
+        this.onTodosChange();
+    }
+
+    handleClearCompleted = () => {
+        this.model.clearCompleted();
         this.onTodosChange();
     }
 }

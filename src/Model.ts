@@ -36,6 +36,11 @@ export default class Model {
         this.commit(this.todosList);
     }
 
+    public clearCompleted() {
+        this.todosList = this.todosList.filter(todo => !todo.complete);
+        this.commit(this.todosList);
+    }
+
 
     private assignTodoId() {
         if (this.todosList.length === 0) {
