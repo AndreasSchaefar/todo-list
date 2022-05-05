@@ -2,7 +2,8 @@ import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
 import { ListControls } from './ListControls';
-import { AppContainer } from './AppContainer'
+import { AppContainer } from './AppContainer';
+import { FavIcon } from './Favicon';
 
 type priority = 'low' | 'medium' | 'high';
 
@@ -20,6 +21,7 @@ export default class View {
     todoList: HTMLUListElement;
     listControls: HTMLDivElement;
     appContainer: HTMLDivElement;
+    favicon: HTMLLinkElement;
 
     constructor() {
         this.mountPoint = document.querySelector('#root');
@@ -29,6 +31,8 @@ export default class View {
         this.listControls = ListControls();
         this.appContainer.append(this.todoList, this.listControls);
         this.mountPoint.append(this.todoForm, this.appContainer);
+        this.favicon = FavIcon();
+        document.querySelector('head').append(this.favicon);
     }
 
     displayTodos(todos: Array<Todo>) {
