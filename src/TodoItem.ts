@@ -6,6 +6,8 @@ interface Todo {
     dueDate: string;
 }
 
+export const stylePriorityMap = new Map(Object.entries({low: 'alert-moderate', medium: 'alert-warning', high: 'alert-danger'}));
+
 export function TodoItem(todo: Todo): HTMLLIElement {
     const li = document.createElement('li');
     li.id = todo.id.toString();
@@ -27,6 +29,7 @@ export function TodoItem(todo: Todo): HTMLLIElement {
     dateInput.value = todo.dueDate;
 
     textSpan.contentEditable = 'true';
+    textSpan.spellcheck = false;
 
     if (todo.complete) {
         const s = document.createElement('s');
@@ -36,7 +39,6 @@ export function TodoItem(todo: Todo): HTMLLIElement {
         textSpan.textContent = todo.text;
     }
 
-    deleteBtn.textContent = 'X';
     deleteBtn.className = 'delete';
     
     priorities.forEach(priority => {
@@ -45,10 +47,11 @@ export function TodoItem(todo: Todo): HTMLLIElement {
         option.textContent = priority;
         option.selected = priority === todo.priority;
         prioritySelect.append(option);
-    })
+    });
+
+    prioritySelect.className = stylePriorityMap.get(prioritySelect.value);
 
     li.append(checkboxInput, textSpan, prioritySelect, dateInput, deleteBtn);
-
 
     return li;
 }
