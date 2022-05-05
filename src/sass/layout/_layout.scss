@@ -1,14 +1,73 @@
-body {
+@use '../abstracts/colors';
+@use '../abstracts/mixins';
+
+#root {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    gap: 4rem;
+    background-image: url('../assets/background.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+
+    & > * {
+        padding: 10px 20px;
+    }
 }
 
-#root {
-    border: solid black 1px;
+.app-container {
+    width: 540px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    border-radius: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    ul {
+        height: 400px;
+        overflow: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0;
+
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+
+            span {
+                display: inline-block;
+                cursor: text;
+                caret-color: colors.$primary-bright-blue;
+                outline: none;
+                white-space: nowrap;
+                overflow: hidden;
+                scrollbar-width: none;
+                min-width: 150px;
+                max-width: 150px;
+            }
+
+            select {
+                @include mixins.selector();
+            }
+
+            input[type="date"] {
+                @include mixins.dateInput;
+            }
+        }
+    }
+
+    .list-controls {
+        display: flex;
+        justify-content: space-between;
+    }
 }
