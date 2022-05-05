@@ -1,0 +1,21 @@
+@use '../abstracts/colors';
+@use '../abstracts/mixins';
+
+#todo-form {
+    display: flex;
+    align-items: center;
+    
+    input[type="text"] {
+        display: inline-block;
+        cursor: text;
+        caret-color: colors.$primary-bright-blue;
+        outline: none;
+        border: transparent;
+    }
+
+    select {
+        @include mixins.selector()
+    }
+
+    
+}

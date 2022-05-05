@@ -1,0 +1,11 @@
+@use '../abstracts//variables';
+@use '../abstracts/mixins';
+
+button.create {
+    @include mixins.button('../assets/arrow-up.svg');
+}
+
+button.delete {
+    @include mixins.button('../assets/delete.svg');
+}
+

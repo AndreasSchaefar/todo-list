@@ -1,0 +1,40 @@
+@use '../abstracts/variables';
+
+@mixin centerAbsolute($url) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(-50% + 5px));
+    content: url($url);
+}
+
+@mixin button($url) {
+    width: variables.$checkbox-size;
+    height: variables.$checkbox-size;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    opacity: 0.5;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+        @include centerAbsolute($url);
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@mixin selector() {
+    cursor: pointer;
+    border-width: 5px;
+    border-color: transparent;
+    padding: 0 10px;
+    min-width: 150px;
+    text-align: start;
+    text-transform: capitalize;
+    border-radius: 2px;
+    position: relative;
+}

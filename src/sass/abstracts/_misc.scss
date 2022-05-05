@@ -1,0 +1,16 @@
+@use './colors';
+
+.alert-danger {
+    background-color: colors.$red-light;
+    color: hsl(354, 61%, 28%)
+}
+
+.alert-warning {
+    background-color: colors.$yellow-light;
+    color: hsl(45, 94%, 27%);
+}
+
+.alert-moderate {
+    background-color: colors.$blue-light;
+    color: hsl(189, 78%, 21%);
+}

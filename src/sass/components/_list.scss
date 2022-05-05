@@ -1,0 +1,32 @@
+@use '../abstracts/colors';
+@use '../abstracts/mixins';
+
+ul {
+    list-style: none;
+
+    li {
+        display: flex;
+        align-items: center;
+
+        span[contenteditable="true"] {
+            display: inline-block;
+            cursor: text;
+            caret-color: colors.$primary-bright-blue;
+            outline: none;
+        }
+
+        select {
+            @include mixins.selector();
+        }
+
+        input[type="date"] {
+            border-color: transparent;
+            border-width: 5px;
+            border-radius: 2px;
+            outline: none;
+            background-color: colors.$primary-bright-blue;
+            color: colors.$very-light-gray;
+            cursor: pointer;
+        }
+    }
+}
