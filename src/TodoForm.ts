@@ -35,7 +35,6 @@ export function TodoForm(): HTMLFormElement {
     setPriorityColors();
 
     prioritySelect.addEventListener('change', setPriorityColors);
-    prioritySelect.addEventListener('change', setPriorityColors);
     
     form.append(checkboxInput, textInput, prioritySelect, dateInput, submitBtn);
 
